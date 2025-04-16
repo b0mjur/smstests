@@ -36,6 +36,8 @@ public class AuthHandler implements HttpHandler {
             String token = UUID.randomUUID().toString();
             Authentication.storeToken(token);
 
+            Logger.log("Successful login for user: " + login);
+
             String response = "{\"token\": \"" + token + "\"}";
             exchange.getResponseHeaders().set("Content-Type", "application/json");
             exchange.sendResponseHeaders(200, response.getBytes().length);
@@ -43,6 +45,7 @@ public class AuthHandler implements HttpHandler {
             os.write(response.getBytes());
             os.close();
         } else {
+            Logger.log("Failed login attempt for user: " + login);
             exchange.sendResponseHeaders(401, -1); // Unauthorized
         }
 
