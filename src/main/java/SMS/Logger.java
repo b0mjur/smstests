@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-//
 
 public class Logger {
     private static final String LOG_FILE = "student_server.log";
@@ -17,6 +16,7 @@ public class Logger {
                 String timeStamp = LocalDateTime.now().format(formatter);
                 pw.println(timeStamp + " - " + message);
             } catch (Exception e) {
+
             e.printStackTrace();
         }
     }
