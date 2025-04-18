@@ -131,6 +131,7 @@ public class StudentHttpServer {
             Student student = new UndergradStudent(id, firstName, lastName, age, major);
             studentService.addStudent(student);
             studentService.saveStudents();
+            Logger.log("New student added: " + student);
             return objectMapper.writeValueAsString(student);
         }
 
